@@ -162,7 +162,10 @@ public class TestCarSP {
      
     @Test
     public void addNewT() {
-        driver.findElement(By.id("new")).click();
+        WebElement buttonNew = (new WebDriverWait(driver, WAIT_MAX)).until((ExpectedCondition<WebElement>) (WebDriver d) -> {
+            return d.findElement(By.id("new"));
+        });
+        buttonNew.click();
         driver.findElement(By.id("year")).sendKeys("2008");
         driver.findElement(By.id("registered")).sendKeys("2002-5-5");
         driver.findElement(By.id("make")).sendKeys("Kia");
